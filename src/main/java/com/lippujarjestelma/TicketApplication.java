@@ -1,6 +1,7 @@
 package com.lippujarjestelma;
 
 import java.util.Arrays;
+import java.util.Date;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +14,8 @@ import com.lippujarjestelma.domain.Category;
 import com.lippujarjestelma.domain.CategoryRepository;
 import com.lippujarjestelma.domain.Event;
 import com.lippujarjestelma.domain.EventRepository;
+import com.lippujarjestelma.domain.OrderDetails;
+import com.lippujarjestelma.domain.OrderRepository;
 import com.lippujarjestelma.domain.Ticket;
 import com.lippujarjestelma.domain.TicketRepository;
 import com.lippujarjestelma.domain.User;
@@ -31,7 +34,8 @@ public class TicketApplication {
 
 	@Bean
 	public CommandLineRunner demo(EventRepository erepository, CategoryRepository crepository,
-			UserRepository urepository, TicketRepository trepository, VenueRepository vrepository) {
+			UserRepository urepository, TicketRepository trepository, VenueRepository vrepository,
+			OrderRepository orepository) {
 		return (args) -> {
 			// delete existing entries
 			erepository.deleteAll();
@@ -113,31 +117,49 @@ public class TicketApplication {
 			erepository.save(event2);
 			erepository.save(event3);
 
+			// add orders
+			OrderDetails order1 = new OrderDetails();
+			order1.setUser(user4);
+			order1.setOrderDate(new Date());
+
+			OrderDetails order2 = new OrderDetails();
+			order2.setUser(user2);
+			order2.setOrderDate(new Date());
+
+			OrderDetails order3 = new OrderDetails();
+			order3.setUser(user1);
+			order3.setOrderDate(new Date());
+
+			orepository.save(order1);
+			orepository.save(order2);
+			orepository.save(order3);
+
 			// add tickets
 			Ticket ticket1 = new Ticket();
-			ticket1.setUser(user2);
 			ticket1.setEvent(event1);
+			ticket1.setOrder(order1);
 
 			Ticket ticket2 = new Ticket();
-			ticket2.setUser(user1);
 			ticket2.setEvent(event1);
+			ticket2.setOrder(order1);
 
 			Ticket ticket3 = new Ticket();
-			ticket3.setUser(user4);
 			ticket3.setEvent(event1);
+			ticket3.setOrder(order2);
 
 			Ticket ticket4 = new Ticket();
-			ticket4.setUser(user1);
 			ticket4.setEvent(event2);
+			ticket4.setOrder(order2);
 
 			Ticket ticket5 = new Ticket();
-			ticket5.setUser(user4);
 			ticket5.setEvent(event3);
+			ticket5.setOrder(order3);
 
 			Ticket ticket6 = new Ticket();
-			ticket6.setUser(user1);
 			ticket6.setEvent(event3);
+			ticket6.setOrder(order3);
 
+			log.info("adding tickets");
 			trepository.save(ticket1);
 			trepository.save(ticket2);
 			trepository.save(ticket3);

@@ -5,20 +5,21 @@ xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymelea
 <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 <link type="text/css" rel="stylesheet" href="/css/styles.css">
 <head>
-<title>Edit event</title>
+<title>Edit User</title>
 </head>
 <body>
-<a href="/" class="btn btn-success">Eventlist</a>
+<a href="/" class="btn btn-success">Edit user</a>
 <h1>Edit event</h1>
-<form th:object="${event}" th:action="@{../saveevent}" action="#" method="post">
+<form th:object="${user}" th:action="@{../saveuser}" action="#" method="post">
 <label for="id"></label>
-<input type="hidden" id="id" th:field="*{eventId}" readonly="readonly" />
+<input type="hidden" id="id" th:field="*{id}" readonly="readonly" />
+<input type="hidden" id="id" th:field="*{username}" readonly="readonly" />
 <div style="clear: both; display: block; height: 10px;"></div>
-<label for="title">Title</label>
- <input type="text" id="title" th:field="*{title}" />
+<label for="firstName">First name</label>
+ <input type="text" id="firstName" th:field="*{firstName}" />
      </br>
- <label for="description">Description</label>
- <input type="text" id="description" th:field="*{description}" />
+ <label for="description">Last Name</label>
+ <input type="text" id="lastName" th:field="*{lastName}" />
      </br>
  <label for="ticketLimit">Ticket limit</label>
  <input type="text" th:field="*{ticketLimit}" />

@@ -41,6 +41,8 @@ xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymelea
 <a href="/addvenue">Add venue</a>
 </br>
  <label for="catlist" >Categories:</label>
+ </br>
+<p>category missing? <a href="/addcategory">Add category</a></p>
    <div class="category-container">
    <div class="category-item" th:each="categora : ${categories}">
         <input style="margin-left:10px" type="checkbox" name="roles" class="beep"
@@ -51,9 +53,8 @@ xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymelea
         </div>
         </div>
     </br>
-   <a href="/addcategory">Add category</a>
    </br>
-<input type="submit" value="Save"></input>
+<input type="submit" class="btn btn-primary"value="Save"></input>
  </form>
 </div>
 </body>

@@ -13,9 +13,11 @@ public class Ticket {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long ticketId;
 
-	@ManyToOne
-	@JoinColumn(name = "id")
-	private User user;
+	/*
+	 * @ManyToOne
+	 * 
+	 * @JoinColumn(name = "id") private User user;
+	 */
 
 	@ManyToOne
 	@JoinColumn(name = "eventId")
@@ -30,9 +32,9 @@ public class Ticket {
 	public Ticket() {
 	}
 
-	public Ticket(User user, Event event, OrderDetails order, String avenueDesc, Boolean redeemed) {
+	public Ticket(/* User user, */ Event event, OrderDetails order, String avenueDesc, Boolean redeemed) {
 		super();
-		this.user = user;
+		// this.user = user;
 		this.event = event;
 		this.redeemed = redeemed;
 		this.order = order;
@@ -46,13 +48,12 @@ public class Ticket {
 		this.ticketId = ticketId;
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
+	/*
+	 * public User getUser() { return user; }
+	 * 
+	 * 
+	 * public void setUser(User user) { this.user = user; }
+	 */
 
 	public Event getEvent() {
 		return event;
@@ -70,9 +71,17 @@ public class Ticket {
 		this.redeemed = redeemed;
 	}
 
+	public OrderDetails getOrder() {
+		return order;
+	}
+
+	public void setOrder(OrderDetails order) {
+		this.order = order;
+	}
+
 	@Override
 	public String toString() {
-		return "Ticket [ticketId=" + ticketId + ", userId=" + user + ", event=" + event + ", avenueDesc="
+		return "Ticket [ticketId=" + ticketId + ", userId=" + /* user + */ ", event=" + event + ", avenueDesc="
 				+ ", redeemed=" + redeemed + "]";
 	}
 

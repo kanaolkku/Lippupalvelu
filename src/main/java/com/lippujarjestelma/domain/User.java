@@ -43,9 +43,12 @@ public class User {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private List<OrderDetails> orders;
 
-	@JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-	private List<Ticket> tickets;
+	/*
+	 * @JsonIgnore
+	 * 
+	 * @OneToMany(cascade = CascadeType.ALL, mappedBy = "user") private List<Ticket>
+	 * tickets;
+	 */
 
 	public User() {
 
@@ -79,13 +82,11 @@ public class User {
 		this.events = events;
 	}
 
-	public List<Ticket> getTickets() {
-		return tickets;
-	}
-
-	public void setTickets(List<Ticket> tickets) {
-		this.tickets = tickets;
-	}
+	/*
+	 * public List<Ticket> getTickets() { return tickets; }
+	 * 
+	 * public void setTickets(List<Ticket> tickets) { this.tickets = tickets; }
+	 */
 
 	public void setUsername(String username) {
 		this.username = username;

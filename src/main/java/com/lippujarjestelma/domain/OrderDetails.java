@@ -27,21 +27,19 @@ public class OrderDetails {
 	// @ManyToMany(cascade = { CascadeType.ALL })
 
 	@JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
 	private List<Ticket> tickets;
 
-	private double totalPrice;
 	private Date orderDate;
 
 	public OrderDetails() {
 	}
 
-	public OrderDetails(long orderId, User user, List<Ticket> tickets, double totalPrice, Date orderDate) {
+	public OrderDetails(long orderId, User user, List<Ticket> tickets, Date orderDate) {
 		super();
 		this.orderId = orderId;
 		this.user = user;
 		this.tickets = tickets;
-		this.totalPrice = totalPrice;
 		this.orderDate = orderDate;
 	}
 
@@ -69,14 +67,6 @@ public class OrderDetails {
 		this.tickets = tickets;
 	}
 
-	public double getTotalPrice() {
-		return totalPrice;
-	}
-
-	public void setTotalPrice(double totalPrice) {
-		this.totalPrice = totalPrice;
-	}
-
 	public Date getOrderDate() {
 		return orderDate;
 	}
@@ -85,10 +75,18 @@ public class OrderDetails {
 		this.orderDate = orderDate;
 	}
 
+	public double totalPriceCalc() {
+		double totalPrice = 0;
+		for (Ticket ticket : this.getTickets()) {
+			totalPrice += ticket.getEvent().getPrice();
+		}
+		return totalPrice;
+	}
+
 	@Override
 	public String toString() {
-		return "Order [orderId=" + orderId + ", user=" + user + ", events=" + tickets + ", totalPrice=" + totalPrice
-				+ ", orderDate=" + orderDate + "]";
+		return "Order [orderId=" + orderId + ", user=" + user + ", events=" + tickets + ", totalPrice=" + ", orderDate="
+				+ orderDate + "]";
 	}
 
 }

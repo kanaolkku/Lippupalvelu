@@ -36,12 +36,10 @@ xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymelea
   		<option th:each="venue : ${venues}" th:value="${venue.venueId}" th:text="${venue.name} + ' (' + ${venue.address} + ')'"></option>
 		</datalist>
 		</br>
+		 		     	       <a href="/addvenue">Add venue</a>
+		</br>
  <label for="price">Price</label>
  <input type="text" th:field="*{price}" />
-   </br>
-
-    </br>
-   <a href="/addcategory">Add category (requires refresh)</a>
    </br>
 <div style="clear: both; display: block; height: 10px;"></div>
 <input class="btn btn-success" type="submit" value="Save"></input>

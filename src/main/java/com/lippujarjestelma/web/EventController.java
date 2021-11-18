@@ -55,7 +55,6 @@ public class EventController {
 	@GetMapping("/event/{id}")
 	public String viewEvent(@PathVariable("id") Long eventId, Model model) {
 		String username = erepository.findById(eventId).get().getUser().getUsername();
-		log.info(username + "bleep");
 		if (username.equals(authHelper.generateAuthUsername()) || authHelper.checkAdminRole() == true) {
 			model.addAttribute("event", erepository.findById(eventId).get());
 			return "eventdetails";
@@ -100,7 +99,6 @@ public class EventController {
 		} else {
 			String authUsername = authHelper.generateAuthUsername();
 			String requestUsername = erepository.findById(eventId).get().getUser().getUsername();
-			log.info(authUsername, requestUsername, "please");
 			if (authUsername.equals(requestUsername)) {
 				erepository.deleteById(eventId);
 			} else {

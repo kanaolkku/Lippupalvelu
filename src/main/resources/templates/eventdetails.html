@@ -24,6 +24,6 @@ xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymelea
 <p>Price: <span th:text="${event.price}"></span></p>
 <p>Host: <span th:text="${event.user.getUsername()}"></span></p>
 <h2>Tickets</h2>
-<p th:each="ticket : ${event.ticketlist}" th:text="'username: ' + ${ticket.getUser().getUsername()} + ', redeemed: ' + ${ticket.getRedeemed()}"></p>
+<p th:each="ticket : ${event.ticketlist}" th:text="'username: ' + ${ticket.getOrder().getUser().getUsername()} + ', redeemed: ' + ${ticket.getRedeemed()}"></p>
 </body>
 </html>
