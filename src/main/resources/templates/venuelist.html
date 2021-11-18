@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+<title>Server Programming</title>
+</head>
+<body>
+<a href="/" class="btn btn-success">Eventlist</a>
+<table class="table table-striped">
+<tr>
+<th>ID</th>
+<th>Venue</th>
+</tr>
+<tr th:each = "venue: ${venues}">
+<td th:text="${venue.venueId}"></td>
+<td th:text="${venue.name}"></td>
+</tr>
+</table>
+<a href="/addvenue" class="btn btn-success">Add Venue</a>
+</body>
+</html>

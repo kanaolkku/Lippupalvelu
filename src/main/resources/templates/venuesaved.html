@@ -1,0 +1,19 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+<title>Server Programming</title>
+</head>
+<body>
+<h1>Venue added successfully</h1>
+<button onclick="goBack()" class="btn btn-success">Go Back</button>
+
+<script>
+function goBack() {
+  window.history.go(-2);
+}
+</script>
+</body>
+</html>

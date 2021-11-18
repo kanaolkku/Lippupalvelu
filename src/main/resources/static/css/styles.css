@@ -1,0 +1,25 @@
+body {
+	text-align: center;
+}
+
+form {
+	max-width: 400px;
+	margin: 0 auto;
+}
+
+.category-item {
+	display: inline-block;
+}
+
+.category-container {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.button-holder {
+	margin-bottom: 10px;
+}
+
+#event-list {
+	max-width: 800px;
+}

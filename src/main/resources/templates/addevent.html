@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+<link type="text/css" rel="stylesheet" href="css/styles.css">
+<head>
+<title>Server Programming</title>
+</head>
+<body>
+<a href="/" class="btn btn-success">Eventlist</a>
+<h1>Add event</h1>
+<div>
+ <form th:object="${event}" th:action="@{saveevent}" action="#" method="post">
+ <label for="title">Title</label>
+ <input type="text" id="title" th:field="*{title}" />
+     </br>
+ <label for="description">Description</label>
+ <input type="text" id="description" th:field="*{description}" />
+     </br>
+ <label for="ticketLimit">Ticket limit</label>
+ <input type="text" th:field="*{ticketLimit}" />
+     </br>
+ <label for="startDate">Date</label>
+ <input type="date" th:field="*{startDate}" max="2999-12-31"/>
+     </br>
+ <label for="startTime">Time</label>
+<input type="time" id="appt" name="appt"
+        required th:field="*{startTime}">
+     </br>
+ <label for="price">Price</label>
+ <input type="text" th:field="*{price}" />
+     </br>
+	  <label for="venue">Venue</label>
+ 		<input list="venues" th:field="*{venue}">
+		<datalist id="venues">
+  		<option th:each="venue : ${venues}" th:value="${venue.venueId}" th:text="${venue.name} + ' (' + ${venue.address} + ')'"></option>
+		</datalist>
+</select>
+</br>
+<a href="/addvenue">Add venue</a>
+</br>
+ <label for="catlist" >Categories:</label>
+   <div class="category-container">
+   <div class="category-item" th:each="categora : ${categories}">
+        <input style="margin-left:10px" type="checkbox" name="roles" class="beep"
+            th:text="${categora.name}"
+            th:value="${categora.categoryid}"
+            th:field="*{category}"
+        >
+        </div>
+        </div>
+    </br>
+   <a href="/addcategory">Add category</a>
+   </br>
+<input type="submit" value="Save"></input>
+ </form>
+</div>
+</body>
+</html>

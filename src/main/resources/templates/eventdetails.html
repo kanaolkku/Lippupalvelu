@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>Server Programming</title>
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+<link type="text/css" rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<a href="/" class="btn btn-success">Event list</a>
+<h2 th:text="${event.title} + ' details'"></h2>
+<div class="button-holder">
+<a th:href="@{/edit/{id}(id=${event.eventId})}" class="btn btn-primary">Edit</a>
+<a th:href="@{/delete/{id}(id=${event.eventId})}" class="btn btn-danger ">Delete</a>
+</div>
+<p>Title: <span th:text="${event.title}"></span></p>
+<p>Description: <span th:text="${event.description}"></span></p>
+<p>Ticket limit: <span th:text="${event.ticketLimit}"></span></p>
+<p>Tickets sold: <span th:text="${event.ticketCount()}"></span></p>
+<p>Date: <span th:text="${event.startDate}"></span></p>
+<p>Time: <span th:text="${event.startTime}"></span></p>
+<p>Categories: <span th:each="category, iterStat : ${event.category}" th:text="!${iterStat.last} ? ${category.name} + ', ' : ${category.name}"}></span></p>
+<p>Price: <span th:text="${event.price}"></span></p>
+<p>Host: <span th:text="${event.user.getUsername()}"></span></p>
+<h2>Tickets</h2>
+<p th:each="ticket : ${event.ticketlist}" th:text="'username: ' + ${ticket.getUser().getUsername()} + ', redeemed: ' + ${ticket.getRedeemed()}"></p>
+</body>
+</html>

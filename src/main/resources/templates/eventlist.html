@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+<title>Server Programming</title>
+</head>
+<body>
+<form th:action="@{/logout}" method="post">
+ <input type="submit" class="btn btn-info" value="Sign Out"/>
+</form>
+<h2 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h2>
+<h3><a href="/user/{id}">profile</a></h3>
+<table class="table table-striped">
+<tr>
+<th>Title</th>
+<th>Description</th>
+<th>Ticket limit</th>
+<th>Tickets sold</th>
+<th>Date</th>
+<th>Time</th>
+<th>Categories</th>
+<th>Price</th>
+<th>Venue</th>
+<th>User</th>
+<th></th>
+<th></th>
+</tr>
+<tr th:each = "event: ${events}">
+<td th:text="${event.title}"></td>
+<td th:text="${event.description}"></td>
+<td th:text="${event.ticketLimit}"></td>
+<td th:text="${event.ticketCount()}"></td>
+<td th:text="${event.startDate}"></td>
+<td th:text="${event.startTime}"></td>
+<td>
+	<p th:each = "category : ${event.category}">
+	<span th:text="${category.name}"></span>
+	</p>
+</td>
+<td th:text="${event.price}"></td>
+<td><p th:text="${event.venue.getName()}"></p><p th:text="${event.venue.getAddress()}"></p></td>
+<td th:text="${event.user.getUsername()}"></td>
+<td><a th:href="@{/event/{id}(id=${event.eventId})}" class="btn btn-primary">View</a></td>
+</tr>
+</table>
+<a href="/addevent" class="btn btn-success">Add Event</a>
+</body>
+</html>

@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>Server Programming</title>
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+<link type="text/css" rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<h1>Add Category</h1>
+<div>
+ <form th:object="${category}" th:action="@{savecategory}" action="#" method="post">
+ <label for="author">Name</label>
+ <input type="text" id="name" th:field="*{name}" />
+<input type="submit" value="Save"></input>
+ </form>
+</div>
+<script>
+function goBack(e) {
+	e.preventDefault()
+  window.history.back();
+}
+</script>
+</body>
+</html>

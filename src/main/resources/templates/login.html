@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+<link type="text/css" rel="stylesheet" href="css/loginpage.css" th:href="@{css/loginpage.css}" />
+<head>
+<title>Server Programming</title>
+</head>
+<body>
+<h3>Control panel for event hosts and admins</h3>
+<h1>Log in</h1>
+<div th:if="${param.error}">
+ Invalid username and password.
+</div>
+<form th:action="@{/login}" method="post">
+ <div><label> User Name</label></br><input type="text" name="username"/></div>
+ <div><label> Password </label></br><input type="password" name="password"/></div>
+ <p>No user? <a href="/signup">sign up!</a></p>
+ <div><input type="submit" value="Sign In" class="btn btn-success"/></div>
+</form>
+</body>
+</html>

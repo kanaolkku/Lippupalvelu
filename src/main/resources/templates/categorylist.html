@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+<title>Server Programming</title>
+</head>
+<body>
+<a href="/" class="btn btn-success">Eventlist</a>
+<table class="table table-striped">
+<tr>
+<th>ID</th>
+<th>Category</th>
+</tr>
+<tr th:each = "category: ${categories}">
+<td th:text="${category.categoryid}"></td>
+<td th:text="${category.name}"></td>
+</tr>
+</table>
+<a href="/addcategory" class="btn btn-success">Add Category</a>
+</body>
+</html>
