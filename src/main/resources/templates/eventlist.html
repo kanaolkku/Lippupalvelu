@@ -11,6 +11,7 @@ xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymelea
  <input type="submit" class="btn btn-info" value="Sign Out"/>
 </form>
 <h2 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h2>
+<a href="/addevent" class="btn btn-success">Add Event</a>
 <table class="table table-striped">
 <tr>
 <th>Title</th>
@@ -44,6 +45,5 @@ xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymelea
 <td><a th:href="@{/event/{id}(id=${event.eventId})}" class="btn btn-primary">View</a></td>
 </tr>
 </table>
-<a href="/addevent" class="btn btn-success">Add Event</a>
 </body>
 </html>
