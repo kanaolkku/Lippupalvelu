@@ -64,8 +64,9 @@ public class WebSecurityConfig {
 	public static class HttpSessionSecurityConfig extends WebSecurityConfigurerAdapter {
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
-			http.csrf().disable().antMatcher("/**").authorizeRequests().antMatchers("/login", "/h2-console/**", "/", "/signup", "/saveuser")
-					.permitAll().antMatchers("/resources/**", "/css/**").permitAll().antMatchers("/**")
+			http.csrf().disable().antMatcher("/**").authorizeRequests()
+					.antMatchers("/login", "/", "/signup", "/saveuser").permitAll()
+					.antMatchers("/resources/**", "/css/**").permitAll().antMatchers("/**")
 					.hasAnyAuthority("ROLE_ADMIN", "ROLE_HOST").and().formLogin().loginPage("/login")
 					.defaultSuccessUrl("/eventlist", true).permitAll().and().logout().permitAll();
 			http.headers().frameOptions().disable();
