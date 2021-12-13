@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 import com.lippujarjestelma.filter.CustomAuthenticationFilter;
 import com.lippujarjestelma.filter.CustomAuthorizationFilter;
@@ -28,6 +29,10 @@ public class WebSecurityConfig {
 	public static class RestApiSecurityConfig extends WebSecurityConfigurerAdapter {
 		@Autowired
 		private UserDetailServiceImpl userDetailService;
+
+		public void addCorsMappings(CorsRegistry registry) {
+			registry.addMapping("/**");
+		}
 
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
