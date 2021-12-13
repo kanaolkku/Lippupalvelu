@@ -15,7 +15,7 @@ import com.lippujarjestelma.domain.Event;
 import com.lippujarjestelma.domain.EventRepository;
 
 @RequestMapping("/api/events")
-@CrossOrigin(maxAge = 3600)
+@CrossOrigin(maxAge = 3600, origins = "*", allowedHeaders = "*")
 @RestController
 public class EventControllerRest {
 	@Autowired

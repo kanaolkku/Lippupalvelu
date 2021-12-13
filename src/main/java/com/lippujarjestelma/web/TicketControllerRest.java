@@ -19,7 +19,7 @@ import com.lippujarjestelma.domain.UserRepository;
 import com.lippujarjestelma.utils.AuthenticationHelper;
 
 @RequestMapping("/api/tickets")
-@CrossOrigin(maxAge = 3600)
+@CrossOrigin(maxAge = 3600, origins = "*", allowedHeaders = "*")
 @RestController
 public class TicketControllerRest {
 	@Autowired

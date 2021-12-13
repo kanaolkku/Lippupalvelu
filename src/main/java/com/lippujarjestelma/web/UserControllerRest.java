@@ -40,7 +40,7 @@ import com.lippujarjestelma.domain.User;
 import com.lippujarjestelma.domain.UserRepository;
 
 @RequestMapping("/api/users/")
-@CrossOrigin(maxAge = 3600)
+@CrossOrigin(maxAge = 3600, origins = "*", allowedHeaders = "*")
 @RestController
 public class UserControllerRest {
 
