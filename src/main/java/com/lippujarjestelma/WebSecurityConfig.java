@@ -35,8 +35,7 @@ public class WebSecurityConfig {
 					authenticationManagerBean());
 			customAuthenticationFilter.setFilterProcessesUrl("/api/login");
 
-			http.cors();
-			http.csrf().disable();
+			http.cors().and().csrf().disable().headers().frameOptions().disable();
 			http.antMatcher("/api/**").authorizeRequests();
 			http.authorizeRequests()
 					.antMatchers("/api/login", "/api/users/token/refresh", "/api/users/save", "/api/events/**")
