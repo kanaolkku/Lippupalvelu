@@ -36,11 +36,12 @@ public class WebSecurityConfig {
 			customAuthenticationFilter.setFilterProcessesUrl("/api/login");
 
 			http.csrf().disable();
+			http.cors().disable();
 			http.antMatcher("/api/**").authorizeRequests();
 			http.authorizeRequests()
 					.antMatchers("/api/login", "/api/users/token/refresh", "/api/users/save", "/api/events/**")
 					.permitAll();
-			http.authorizeRequests().antMatchers("/api/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_USER");
+			http.authorizeRequests().antMatchers("/api/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_USER", "ROLE_HOST");
 			// http.authorizeRequests().anyRequest().authenticated();
 			http.addFilter(customAuthenticationFilter);
 			http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);

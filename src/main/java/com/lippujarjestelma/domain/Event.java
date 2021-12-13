@@ -172,6 +172,14 @@ public class Event {
 
 	}
 
+	public boolean checkAvailability() {
+		if (ticketCount() == ticketLimit) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
 	private String calcDate(String dateString) {
 		String[] stringlist = dateString.split("-");
 
