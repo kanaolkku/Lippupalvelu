@@ -42,9 +42,8 @@ public class WebSecurityConfig {
 
 			http.cors().and().csrf().disable().headers().frameOptions().disable();
 			http.antMatcher("/api/**").authorizeRequests();
-			http.authorizeRequests()
-					.antMatchers("/api/login", "/api/users/token/refresh", "/api/users/save", "/api/events/**")
-					.permitAll();
+			http.authorizeRequests().antMatchers("/api/login", "/api/users/token/refresh", "/api/users/save",
+					"/api/events/**", "/resources/**", "/css/**").permitAll();
 			http.authorizeRequests().antMatchers("/api/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_USER", "ROLE_HOST");
 			// http.authorizeRequests().anyRequest().authenticated();
 			http.addFilter(customAuthenticationFilter);
