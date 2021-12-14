@@ -69,7 +69,7 @@ public class WebSecurityConfig {
 	public static class HttpSessionSecurityConfig extends WebSecurityConfigurerAdapter {
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
-			http.csrf().disable().antMatcher("/**").authorizeRequests()
+			http.cors().and().csrf().disable().antMatcher("/**").authorizeRequests()
 					.antMatchers("/login", "/", "/signup", "/saveuser").permitAll()
 					.antMatchers("/resources/**", "/css/**").permitAll().antMatchers("/**")
 					.hasAnyAuthority("ROLE_ADMIN", "ROLE_HOST").and().formLogin().loginPage("/login")
